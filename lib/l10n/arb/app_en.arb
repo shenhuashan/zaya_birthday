@@ -10,5 +10,8 @@
   "readTelegraph": "Read Telegraph",
   "viewGalery": "View Galery",
   "next": "Next",
-  "verify": "Verify"
+  "verify": "Verify",
+  "email": "Email",
+  "cannotBeEmpty": "Cannot be empty",
+  "invalidEmailFormat": "Invalid email format"
 }

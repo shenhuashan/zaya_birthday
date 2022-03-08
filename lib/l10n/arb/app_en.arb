@@ -1,7 +1,14 @@
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "pleaseVerifyYourIdentity": "Please verify your identity",
+  "whatIsYourBoyfriendEmail": "What is your boyfriend's email?",
+  "whatIsYourUsualPassword": "What is your usual password?",
+  "yourAnswer": "Your answer",
+  "hello": "Hello",
+  "zaya": "Zaya",
+  "happyBirthday": "Happy Birthday",
+  "readTelegraph": "Read Telegraph",
+  "viewGalery": "View Galery",
+  "next": "Next",
+  "verify": "Verify"
 }

@@ -5,9 +5,12 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:flutter/material.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:zaya_birthday/counter/counter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zaya_birthday/app/router/router.dart';
+import 'package:zaya_birthday/core/values/colors.dart';
+import 'package:zaya_birthday/core/values/constants.dart';
 import 'package:zaya_birthday/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -15,19 +18,26 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-        colorScheme: ColorScheme.fromSwatch(
-          accentColor: const Color(0xFF13B9FF),
-        ),
+    return ScreenUtilInit(
+      designSize: const Size(ScreenUtilSize.width, ScreenUtilSize.height),
+      builder: () => FluentApp.router(
+        debugShowCheckedModeBanner: false,
+        color: AppColor.pink,
+        routerDelegate: router.routerDelegate,
+        routeInformationParser: router.routeInformationParser,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
+        builder: (context, widget) {
+          ScreenUtil.setContext(context);
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+            child: widget!,
+          );
+        },
       ),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-      ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:zaya_birthday/core/values/colors.dart';
@@ -62,18 +63,31 @@ class _TelegraphPageState extends State<TelegraphPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: GestureDetector(
-                onTap: () {
-                  context.pop();
-                },
-                child: Icon(
-                  FluentIcons.back,
-                  color: AppColor.white,
-                  size: 24.r,
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pop();
+                    },
+                    child: Icon(
+                      FluentIcons.back,
+                      color: AppColor.white,
+                      size: 24.r,
+                    ),
+                  ),
                 ),
-              ),
+                Expanded(
+                    child: Center(
+                        child: Text(
+                  'My Message to You~',
+                  style: GoogleFonts.pacifico(
+                    fontSize: 48.sp,
+                    color: AppColor.white,
+                  ),
+                )))
+              ],
             ),
             Container(
               margin: EdgeInsets.symmetric(

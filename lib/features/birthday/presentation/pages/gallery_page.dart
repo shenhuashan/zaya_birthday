@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:zaya_birthday/app/router/router.dart';
 import 'package:zaya_birthday/core/values/colors.dart';
 
@@ -9,7 +10,7 @@ class GalleryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> images = List.generate(10, (index) => '${index + 1}.jpg');
+    final images = List.generate(10, (index) => '${index + 1}.jpg');
 
     return ScaffoldPage(
       content: Container(
@@ -19,18 +20,33 @@ class GalleryPage extends StatelessWidget {
         padding: EdgeInsets.all(40.r),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: GestureDetector(
-                onTap: () {
-                  context.pop();
-                },
-                child: Icon(
-                  FluentIcons.back,
-                  color: AppColor.white,
-                  size: 24.r,
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pop();
+                    },
+                    child: Icon(
+                      FluentIcons.back,
+                      color: AppColor.white,
+                      size: 24.r,
+                    ),
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      "Birthday Girl's Gallery",
+                      style: GoogleFonts.pacifico(
+                        fontSize: 48.sp,
+                        color: AppColor.white,
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
             GridView.builder(
               itemCount: images.length,
@@ -51,10 +67,21 @@ class GalleryPage extends StatelessWidget {
                         },
                       );
                     },
-                    child: Image.asset(
-                      'assets/images/${images[index]}',
-                      width: 150,
-                      height: 40,
+                    child: Container(
+                      padding: EdgeInsets.all(12.r),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.r),
+                        color: AppColor.darkPurple,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.r),
+                        child: Image.asset(
+                          'assets/images/${images[index]}',
+                          width: 150,
+                          height: 40,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 );

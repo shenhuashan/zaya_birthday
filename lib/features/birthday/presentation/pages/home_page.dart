@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: 115.w, vertical: 10.h),
+                          horizontal: 112.w, vertical: 10.h),
                       child: Text(
                         l10n.viewGalery,
                         style: GoogleFonts.montserrat(

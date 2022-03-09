@@ -41,5 +41,5 @@ class SecondQuestionBloc
     });
   }
 
-  static const _defaultPass = 'jendela,';
+  static const _defaultPass = '';
 }

@@ -7,6 +7,8 @@ environment:
   sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
+  animated_text_kit: ^4.2.1
+  audioplayers: 1.0.0-rc.1
   bloc: ^8.0.3
   fluent_ui: ^3.9.1
   flutter:
@@ -44,3 +46,4 @@ flutter:
   assets:
     - assets/images/
     - assets/lotties/
+    - assets/songs/

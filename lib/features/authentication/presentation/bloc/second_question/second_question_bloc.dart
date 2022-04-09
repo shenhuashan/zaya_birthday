@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zaya_birthday/core/stream/stream_transformer.dart';
 import 'package:zaya_birthday/features/authentication/presentation/field_password.dart';
 
 part 'second_question_state.dart';
@@ -10,18 +11,23 @@ part 'second_question_bloc.freezed.dart';
 class SecondQuestionBloc
     extends Bloc<SecondQuestionEvent, SecondQuestionState> {
   SecondQuestionBloc() : super(SecondQuestionState.initial()) {
-    on<SecondQuestionPasswordFieldChanged>((event, emit) {
-      final pass = FieldPassword.dirty(event.value);
-      emit(
-        state.copyWith(
-          fieldPassword: pass,
-          status: Formz.validate(
-            [pass],
+    on<SecondQuestionPasswordFieldChanged>(
+      (event, emit) {
+        final pass = FieldPassword.dirty(event.value);
+        emit(
+          state.copyWith(
+            fieldPassword: pass,
+            status: Formz.validate(
+              [pass],
+            ),
+            isAllowedToProceed: false,
           ),
-          isAllowedToProceed: false,
-        ),
-      );
-    });
+        );
+      },
+      transformer: debounceTransformer(
+        const Duration(milliseconds: 500),
+      ),
+    );
 
     on<SecondQuestionVerifyButtonPressed>((event, emit) {
       if (state.status.isValid) {

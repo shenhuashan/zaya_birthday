@@ -82,7 +82,18 @@ class GalleryPhotoViewWrapper extends StatefulWidget {
 
 class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
   late int currentIndex = widget.initialIndex;
-
+  final greetings = <String>[
+    'Cie yang ulang tahun 😍',
+    'Anaknya ndak tahan liat cermin gede 😋',
+    'Skate girl ❤️',
+    'Tali sepatunya lepas, sorry 🤣',
+    'Sesaat sebelum perut mules 🥲',
+    'Vitamin 🌊',
+    'Berlarilah dan terus tertawa 😎',
+    'Oiiittt 🐚',
+    'US ❤️',
+    'Kearifan Nusantara',
+  ];
   void onPageChanged(int index) {
     setState(() {
       currentIndex = index;
@@ -109,7 +120,7 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
           Container(
             padding: EdgeInsets.all(20.r),
             child: Text(
-              'Image ${currentIndex + 1}',
+              '${greetings[currentIndex]}',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17.sp,
